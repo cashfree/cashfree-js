@@ -1,7 +1,3 @@
-"use strict";
-
-Object.defineProperty(exports, "__esModule", { value: true });
-
 var V3_URL = "https://sdk.cashfree.com/js/v3/cashfree.js";
 var V3_URL_REGEX = /^https:\/\/sdk\.cashfree\.com\/js\/v3\/?(\?.*)?$/;
 var EXISTING_SCRIPT_MESSAGE = "load was called but an existing Cashfree.js script already exists in the document; existing script parameters will be used";
@@ -113,4 +109,5 @@ var load = async function load() {
     const maybeCashfree = await cashfreePromise$1;
     return initCashfree(maybeCashfree, args, startTime);
 };
-exports.load = load;
+
+export { load };

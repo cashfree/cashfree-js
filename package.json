@@ -1,8 +1,9 @@
 {
   "name": "@cashfreepayments/cashfree-js",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "cashfree.js loader",
   "main": "dist/script.js",
+  "module": "dist/script.esm.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
