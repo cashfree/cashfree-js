@@ -23,7 +23,6 @@ import {load} from '@cashfree/cashfree-js';
 const cashfree = await load();
 ```
 
-
 For more information on how to use Cashfree.js, please refer to the [Cashfree.js API reference](https://docs.cashfree.com/docs/getting-started) or learn to [accept a payment](https://docs.cashfree.com/docs/getting-started#pay) with Cashfree.
 
 If you have deployed a [Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/Security/CSP), make sure to [include Cashfree.js in your directives].
