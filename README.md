@@ -7,7 +7,7 @@ Use [Cashfree.js](https://docs.cashfree.com/docs/js-integration) as an ES module
 Use `npm` to install the Cashfree.js module:
 
 ```sh
-npm install @cashfree/cashfree-js
+npm install @cashfreepayments/cashfree-js
 ```
 
 ## Usage
