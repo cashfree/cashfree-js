@@ -18,7 +18,7 @@ This function returns a `Promise` that resolves with a newly created `Cashfree` 
 If you call `load` in a server environment it will resolve to `null`.
 
 ```js
-import {load} from '@cashfree/cashfree-js';
+import {load} from '@cashfreepayments/cashfree-js';
 
 const cashfree = await load();
 ```
