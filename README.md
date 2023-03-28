@@ -20,7 +20,9 @@ If you call `load` in a server environment it will resolve to `null`.
 ```js
 import {load} from '@cashfreepayments/cashfree-js';
 
-const cashfree = await load();
+const cashfree = await load({
+	mode: "sandbox" //or production
+});
 ```
 
 For more information on how to use Cashfree.js, please refer to the [Cashfree.js API reference](https://docs.cashfree.com/docs/getting-started) or learn to [accept a payment](https://docs.cashfree.com/docs/getting-started#pay) with Cashfree.

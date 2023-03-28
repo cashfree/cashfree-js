@@ -22,7 +22,7 @@ var findScript = function findScript() {
 };
 
 var injectScript = function injectScript(params) {
-    var queryString = params && !params.advancedFraudSignals ? "?advancedFraudSignals=false" : "";
+    var queryString = "";
     var script = document.createElement("script");
     script.src = "".concat(V3_URL).concat(queryString);
     var headOrBody = document.head || document.body;
