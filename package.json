@@ -1,6 +1,6 @@
 {
   "name": "@cashfreepayments/cashfree-js",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "cashfree.js loader",
   "main": "dist/script.js",
   "module": "dist/script.esm.js",
