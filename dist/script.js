@@ -5,6 +5,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var V3_URL = "https://sdk.cashfree.com/js/v3/cashfree.js";
 var V3_URL_REGEX = /^https:\/\/sdk\.cashfree\.com\/js\/v3\/?(\?.*)?$/;
 var EXISTING_SCRIPT_MESSAGE = "load was called but an existing Cashfree.js script already exists in the document; existing script parameters will be used";
+
+// Checks whether v3 js script exists in the website
 var findScript = function findScript() {
     var scripts = document.querySelectorAll('script[src^="'.concat(V3_URL, '"]'));
 
@@ -21,6 +23,7 @@ var findScript = function findScript() {
     return null;
 };
 
+// Injects v3 js script to the website
 var injectScript = function injectScript(params) {
     var queryString = "";
     var script = document.createElement("script");
