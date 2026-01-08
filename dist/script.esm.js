@@ -1,10 +1,13 @@
 var V3_URL = "https://sdk.cashfree.com/js/v3/cashfree.js";
 var V3_URL_REGEX = /^https:\/\/sdk\.cashfree\.com\/js\/v3\/?(\?.*)?$/;
-var EXISTING_SCRIPT_MESSAGE = "load was called but an existing Cashfree.js script already exists in the document; existing script parameters will be used";
+var EXISTING_SCRIPT_MESSAGE =
+    "load was called but an existing Cashfree.js script already exists in the document; existing script parameters will be used";
 
 // Checks whether v3 js script exists in the website
 var findScript = function findScript() {
-    var scripts = document.querySelectorAll('script[src^="'.concat(V3_URL, '"]'));
+    var scripts = document.querySelectorAll(
+        'script[src^="'.concat(V3_URL, '"]')
+    );
 
     for (var i = 0; i < scripts.length; i++) {
         var script = scripts[i];
@@ -27,7 +30,9 @@ var injectScript = function injectScript(params) {
     var headOrBody = document.head || document.body;
 
     if (!headOrBody) {
-        throw new Error("Expected document.body not to be null. Cashfree.js requires a <body> element.");
+        throw new Error(
+            "Expected document.body not to be null. Cashfree.js requires a <body> element."
+        );
     }
 
     headOrBody.appendChild(script);
@@ -103,7 +108,11 @@ cashfreePromise$1["catch"](function (err) {
     }
 });
 var load = async function load() {
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+    for (
+        var _len = arguments.length, args = new Array(_len), _key = 0;
+        _key < _len;
+        _key++
+    ) {
         args[_key] = arguments[_key];
     }
 
