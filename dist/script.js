@@ -10,7 +10,7 @@ var EXISTING_SCRIPT_MESSAGE =
 // Checks whether v3 js script exists in the website
 var findScript = function findScript() {
     var scripts = document.querySelectorAll(
-        'script[src^="'.concat(V3_URL, '"]'),
+        'script[src^="'.concat(V3_URL, '"]')
     );
 
     for (var i = 0; i < scripts.length; i++) {
@@ -35,7 +35,7 @@ var injectScript = function injectScript(params) {
 
     if (!headOrBody) {
         throw new Error(
-            "Expected document.body not to be null. Cashfree.js requires a <body> element.",
+            "Expected document.body not to be null. Cashfree.js requires a <body> element."
         );
     }
 
