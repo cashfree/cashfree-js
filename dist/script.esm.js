@@ -93,7 +93,7 @@ var loadScript = function loadScript(params) {
                         } catch (error) {
                             reject(error);
                         }
-                    }, 500);
+                    }, 100);
                 } else {
                     cashfreePromise = null;
                     reject(new Error("Failed to load Cashfree.js"));
