@@ -1,5 +1,5 @@
 var V3_URL = "https://sdk.cashfree.com/js/v3/cashfree.js";
-var V3_URL_REGEX = /^https:\/\/sdk\.cashfree\.com\/js\/v3\/?(\?.*)?$/;
+var V3_URL_REGEX = /^https:\/\/sdk\.cashfree\.com\/js\/v3\/.*$/;
 var EXISTING_SCRIPT_MESSAGE =
     "load was called but an existing Cashfree.js script already exists in the document; existing script parameters will be used";
 
@@ -63,6 +63,44 @@ var loadScript = function loadScript(params) {
             return;
         }
 
+        var MAX_RETRIES = 3;
+        var retryCount = 0;
+        var retrying = false;
+
+        function attachListeners(script) {
+            script.addEventListener("load", function () {
+                if (window.Cashfree) {
+                    resolve(window.Cashfree);
+                } else {
+                    reject(new Error("Cashfree.js not available"));
+                }
+            });
+            script.addEventListener("error", function () {
+                if (retrying) return;
+                if (retryCount < MAX_RETRIES) {
+                    retrying = true;
+                    retryCount++;
+                    if (script.parentNode) {
+                        script.parentNode.removeChild(script);
+                    }
+                    setTimeout(function () {
+                        retrying = false;
+                        try {
+                            var existingScript = findScript();
+                            attachListeners(
+                                existingScript || injectScript(params),
+                            );
+                        } catch (error) {
+                            reject(error);
+                        }
+                    }, 500);
+                } else {
+                    cashfreePromise = null;
+                    reject(new Error("Failed to load Cashfree.js"));
+                }
+            });
+        }
+
         try {
             var script = findScript();
 
@@ -72,16 +110,7 @@ var loadScript = function loadScript(params) {
                 script = injectScript(params);
             }
 
-            script.addEventListener("load", function () {
-                if (window.Cashfree) {
-                    resolve(window.Cashfree);
-                } else {
-                    reject(new Error("Cashfree.js not available"));
-                }
-            });
-            script.addEventListener("error", function () {
-                reject(new Error("Failed to load Cashfree.js"));
-            });
+            attachListeners(script);
         } catch (error) {
             reject(error);
             return;
